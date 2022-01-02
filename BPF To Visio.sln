@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPF To Visio", "BPF To Visio\BPF To Visio.csproj", "{31AC4CA4-1FA7-4594-A93D-444893374C11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31AC4CA4-1FA7-4594-A93D-444893374C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31AC4CA4-1FA7-4594-A93D-444893374C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31AC4CA4-1FA7-4594-A93D-444893374C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31AC4CA4-1FA7-4594-A93D-444893374C11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F468AA28-FB7D-43A1-A028-59F372D22721}
+	EndGlobalSection
+EndGlobal
