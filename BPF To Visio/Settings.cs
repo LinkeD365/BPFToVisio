@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BPF_To_Visio
+﻿namespace LinkeD365.BPFToVisio
 {
     /// <summary>
     /// This class can help you to store settings for your plugin
