@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Linq;
+using System.Security;
 using System.Xml.Linq;
 
 namespace LinkeD365.BPFToVisio
@@ -218,17 +219,14 @@ namespace LinkeD365.BPFToVisio
             line.Connect(this, child, curChild, noChild);
         }
 
-        private static string XmlString(string text)
-        {
-            return new XElement("t", text).LastNode.ToString();
-        }
-
         protected void AddProp(string name, string value)
         {
             //  if (Props.ha)
             var element = Props.Elements().FirstOrDefault(el => el.Attributes().Any(at => at.Name == "N" && at.Value == name));
-            if (element != null) element.ReplaceWith(XElement.Parse("<Row N='" + name + "'> <Cell N='Value' V='" + XmlString(value) + "' U='STR'/></Row>"));
-            else Props.Add(XElement.Parse("<Row N='" + name + "'> <Cell N='Value' V='" + XmlString(value) + "' U='STR'/></Row>"));
+            var escapedValue = SecurityElement.Escape(value);
+
+            if (element != null) element.ReplaceWith(XElement.Parse("<Row N='" + name + "'> <Cell N='Value' V='" + escapedValue + "' U='STR'/></Row>"));
+            else Props.Add(XElement.Parse("<Row N='" + name + "'> <Cell N='Value' V='" + escapedValue + "' U='STR'/></Row>"));
         }
 
         protected void AddType(string value)
