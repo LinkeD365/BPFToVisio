@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Linq;
+using System.Security;
 using System.Xml.Linq;
 
 namespace LinkeD365.BPFToVisio
@@ -222,8 +223,10 @@ namespace LinkeD365.BPFToVisio
         {
             //  if (Props.ha)
             var element = Props.Elements().FirstOrDefault(el => el.Attributes().Any(at => at.Name == "N" && at.Value == name));
-            if (element != null) element.ReplaceWith(XElement.Parse("<Row N='" + name + "'> <Cell N='Value' V='" + value + "' U='STR'/></Row>"));
-            else Props.Add(XElement.Parse("<Row N='" + name + "'> <Cell N='Value' V='" + value + "' U='STR'/></Row>"));
+            var escapedValue = SecurityElement.Escape(value);
+
+            if (element != null) element.ReplaceWith(XElement.Parse("<Row N='" + name + "'> <Cell N='Value' V='" + escapedValue + "' U='STR'/></Row>"));
+            else Props.Add(XElement.Parse("<Row N='" + name + "'> <Cell N='Value' V='" + escapedValue + "' U='STR'/></Row>"));
         }
 
         protected void AddType(string value)

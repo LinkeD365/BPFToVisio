@@ -58,7 +58,7 @@ namespace LinkeD365.BPFToVisio
         {
             WorkAsync(new WorkAsyncInfo
             {
-                Message = "Retrieiving the Chat Bots",
+                Message = "Retrieving Business Process Flows",
                 Work = (w, e) =>
                 {
                     var fetchXml = $@"

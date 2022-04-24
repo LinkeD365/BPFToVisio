@@ -28,14 +28,13 @@ namespace LinkeD365.BPFToVisio
             {// No expression yet, so first, just add the text
                 Expression = new StringBuilder();
                 string binaryOp = GetBinaryOp(conditionStep.SelectToken("$.conditionExpression.conditionOperatoroperator").ToString());
-                AddEntityExpression((JObject)conditionStep.SelectToken("$.conditionExpression"), binaryOp); ;
-                //JObject left = (JObject)conditionStep.SelectToken("$.conditionExpression.left");
-                //if (left["__class"].ToString() == "BinaryExpression:#Microsoft.Crm.Workflow.Expressions")
-                //{
-                //    AddEntityExpression(left);
-                //}
-                //AddEntityExpression((JObject)conditionStep.SelectToken("$.conditionExpression.right[0]"));
-                AddText(Expression.ToString().Substring(0, Expression.ToString().LastIndexOf(binaryOp)));
+                AddEntityExpression((JObject)conditionStep.SelectToken("$.conditionExpression"), binaryOp);
+
+                var indexOf = Expression.ToString().LastIndexOf(binaryOp);
+                if (indexOf != -1)
+                {
+                    AddText(Expression.ToString().Substring(0, indexOf));
+                }
 
                 AddName(conditionStep.SelectToken("description"));
                 return this;
